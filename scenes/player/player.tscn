@@ -1,0 +1,292 @@
+[gd_scene load_steps=22 format=3 uid="uid://b5hahte06un3t"]
+
+[ext_resource type="Script" path="res://src/game/player/player.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://c52fwe42gxovd" path="res://textures/player/doctor_one.png" id="2_7q7p4"]
+[ext_resource type="Texture2D" uid="uid://c37d3eu8xjg5" path="res://textures/light/light-cone.png" id="3_kajlk"]
+[ext_resource type="Script" path="res://scenes/player/flashlight.gd" id="4_4dh5f"]
+[ext_resource type="Script" path="res://src/game/player/player_raycast.gd" id="6"]
+
+[sub_resource type="Animation" id="Animation_nxdy5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11]
+}
+
+[sub_resource type="Animation" id="Animation_27nqt"]
+resource_name = "walk_left"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.766667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27]
+}
+
+[sub_resource type="Animation" id="Animation_hiqjj"]
+resource_name = "walk_right"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5, 0.766667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_2375b"]
+resource_name = "walk_down"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.266667, 0.533333, 0.766667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_1cviy"]
+resource_name = "bottom_left"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.333333, 0.566667, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [28, 29, 30, 31]
+}
+
+[sub_resource type="Animation" id="Animation_lrpef"]
+resource_name = "bottom_right"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.3, 0.533333, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_rlkwa"]
+resource_name = "walk_up"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.266667, 0.533333, 0.766667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_6r06y"]
+resource_name = "top_left"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.3, 0.566667, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [20, 21, 22, 23]
+}
+
+[sub_resource type="Animation" id="Animation_80utw"]
+resource_name = "top_right"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.266667, 0.5, 0.766667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ksu3"]
+_data = {
+"RESET": SubResource("Animation_nxdy5"),
+"walk__left": SubResource("Animation_27nqt"),
+"walk__right": SubResource("Animation_hiqjj"),
+"walk_down_": SubResource("Animation_2375b"),
+"walk_down_left": SubResource("Animation_1cviy"),
+"walk_down_right": SubResource("Animation_lrpef"),
+"walk_up_": SubResource("Animation_rlkwa"),
+"walk_up_left": SubResource("Animation_6r06y"),
+"walk_up_right": SubResource("Animation_80utw")
+}
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(9, 21)
+
+[sub_resource type="Gradient" id="Gradient_tjton"]
+offsets = PackedFloat32Array(0.191892, 0.278378, 0.616216)
+colors = PackedColorArray(1, 1, 1, 0.529412, 0.445161, 0.445161, 0.445161, 0.790512, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xqpya"]
+gradient = SubResource("Gradient_tjton")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.508547, 0.512821)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="CircleShape2D" id="3"]
+radius = 60.0
+
+[sub_resource type="CircleShape2D" id="2"]
+radius = 360.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_m1xp2"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("PlayerSprite:frame")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Flashlight:visible")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Flashlight:rotation")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+
+[node name="Player" type="CharacterBody2D" groups=["Save", "player"]]
+script = ExtResource("1")
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(4.76837e-07, -1)
+scale = Vector2(2, 2.109)
+texture = ExtResource("2_7q7p4")
+hframes = 4
+vframes = 9
+frame = 11
+
+[node name="PlayerAnimation" type="AnimationPlayer" parent="PlayerSprite"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_6ksu3")
+}
+
+[node name="CollisionShape3D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 3)
+scale = Vector2(2, 2)
+shape = SubResource("1")
+
+[node name="CandleLight" type="PointLight2D" parent="."]
+position = Vector2(2.38419e-07, -4.76837e-07)
+scale = Vector2(2, 1.976)
+color = Color(1, 1, 1, 0.396078)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_xqpya")
+
+[node name="Flashlight" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(0.45321, -1.50001)
+scale = Vector2(0.32666, 0.282534)
+color = Color(1, 1, 1, 0.521569)
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+texture = ExtResource("3_kajlk")
+offset = Vector2(450, 0)
+script = ExtResource("4_4dh5f")
+
+[node name="MoveSound" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+bus = &"Sound"
+
+[node name="Timer" type="Timer" parent="MoveSound"]
+one_shot = true
+
+[node name="SoundEffects" type="AudioStreamPlayer" parent="."]
+bus = &"Sound"
+
+[node name="Legacy" type="Node2D" parent="."]
+
+[node name="ScareArea" type="Area2D" parent="Legacy"]
+visible = false
+input_pickable = false
+monitorable = false
+
+[node name="Shape3D" type="CollisionShape2D" parent="Legacy/ScareArea"]
+position = Vector2(2.12372, 1.88775)
+shape = SubResource("3")
+
+[node name="SpotArea" type="Area2D" parent="Legacy"]
+visible = false
+input_pickable = false
+monitorable = false
+
+[node name="Shape3D" type="CollisionShape2D" parent="Legacy/SpotArea"]
+shape = SubResource("2")
+
+[node name="RayCastSCP" type="RayCast2D" parent="Legacy"]
+target_position = Vector2(0, 0)
+script = ExtResource("6")
+
+[node name="ColorRect" type="ColorRect" parent="Legacy"]
+visible = false
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(1, 0.905882, 0.87451, 1)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_m1xp2")
+
+[connection signal="timeout" from="MoveSound/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="body_entered" from="Legacy/ScareArea" to="Legacy/RayCastSCP" method="_on_ScareArea_body_entered"]
+[connection signal="body_exited" from="Legacy/ScareArea" to="Legacy/RayCastSCP" method="_on_ScareArea_body_exited"]
+[connection signal="body_entered" from="Legacy/SpotArea" to="Legacy/RayCastSCP" method="_on_SpotArea_body_entered"]
+[connection signal="body_exited" from="Legacy/SpotArea" to="Legacy/RayCastSCP" method="_on_SpotArea_body_exited"]
+[connection signal="danger_scared" from="Legacy/RayCastSCP" to="." method="scare_sound"]
+[connection signal="danger_spotted" from="Legacy/RayCastSCP" to="." method="tease_sound"]

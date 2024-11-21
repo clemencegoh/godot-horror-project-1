@@ -1,0 +1,245 @@
+[gd_scene load_steps=22 format=3 uid="uid://bm88ukonmbb7r"]
+
+[ext_resource type="Script" path="res://src/game/hud/fps_label.gd" id="1"]
+[ext_resource type="Script" path="res://src/game/hud/stamina.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://cmtglghag27j0" path="res://textures/icon/stamina.png" id="3"]
+[ext_resource type="Script" path="res://src/game/effect/blink.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://c8qifoqc8vbhc" path="res://textures/icon/blink.png" id="5"]
+[ext_resource type="PackedScene" uid="uid://1nhg8noc8bwx" path="res://scenes/hud/in_game_menu.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://chmqacxx78lcw" path="res://scenes/inventory.tscn" id="7"]
+[ext_resource type="StyleBox" path="res://textures/hud/message_box.tres" id="8"]
+[ext_resource type="Script" path="res://src/game/hud/death_message.gd" id="9"]
+[ext_resource type="FontFile" uid="uid://cn5qeqjqykham" path="res://fonts/connection_ii/ConnectionII.otf" id="10"]
+[ext_resource type="PackedScene" path="res://scenes/hud/death_menu.tscn" id="11"]
+[ext_resource type="Script" path="res://src/game/hud/saving_message.gd" id="12"]
+[ext_resource type="Script" path="res://src/game/hud/loading_message.gd" id="13"]
+
+[sub_resource type="Gradient" id="1"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.356863, 0.356863, 0.356863, 1)
+
+[sub_resource type="GradientTexture2D" id="2"]
+gradient = SubResource("1")
+
+[sub_resource type="Gradient" id="3"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.14902, 0.14902, 0.14902, 1)
+
+[sub_resource type="GradientTexture2D" id="4"]
+gradient = SubResource("3")
+
+[sub_resource type="Gradient" id="5"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.27451, 0.14902, 0.14902, 1)
+
+[sub_resource type="GradientTexture2D" id="6"]
+gradient = SubResource("3")
+
+[sub_resource type="FontFile" id="7"]
+fallbacks = Array[Font]([ExtResource("10"), ExtResource("10")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="FontFile" id="8"]
+fallbacks = Array[Font]([ExtResource("10"), ExtResource("10")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="DebugModeHint" type="Label" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -345.0
+offset_top = -21.0
+text = "Press \"N\" to toggle debugging mode."
+
+[node name="FPSLabel" type="Label" parent="."]
+process_mode = 3
+offset_right = 40.0
+offset_bottom = 21.0
+script = ExtResource("1")
+
+[node name="Timer" type="Timer" parent="FPSLabel"]
+autostart = true
+
+[node name="Stamina" type="TextureProgressBar" parent="."]
+offset_left = 47.0
+offset_top = 560.0
+offset_right = 227.0
+offset_bottom = 580.0
+step = 0.1
+value = 50.0
+nine_patch_stretch = true
+texture_under = SubResource("2")
+texture_progress = SubResource("4")
+script = ExtResource("2")
+exhausted_color = SubResource("5")
+
+[node name="Icon" type="TextureRect" parent="Stamina"]
+layout_mode = 0
+offset_left = -24.0
+offset_right = -4.0
+offset_bottom = 20.0
+texture = ExtResource("3")
+expand_mode = 1
+
+[node name="BlinkMeter" type="TextureProgressBar" parent="."]
+visible = false
+offset_left = 47.0
+offset_top = 520.0
+offset_right = 227.0
+offset_bottom = 540.0
+step = 0.1
+value = 50.0
+nine_patch_stretch = true
+texture_under = SubResource("2")
+texture_progress = SubResource("6")
+script = ExtResource("4")
+
+[node name="Icon" type="TextureRect" parent="BlinkMeter"]
+layout_mode = 0
+offset_left = -24.0
+offset_right = -4.0
+offset_bottom = 20.0
+texture = ExtResource("5")
+expand_mode = 1
+
+[node name="BlinkTime" type="Timer" parent="BlinkMeter"]
+one_shot = true
+
+[node name="InGameMenu" parent="." instance=ExtResource("6")]
+process_mode = 3
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.5
+offset_top = -158.5
+offset_right = 76.5
+offset_bottom = 158.5
+
+[node name="Inventory" parent="." instance=ExtResource("7")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -512.0
+offset_top = -300.0
+offset_right = 512.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DeathMessage" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -76.0
+offset_right = 280.0
+offset_bottom = 76.0
+theme_override_styles/panel = ExtResource("8")
+script = ExtResource("9")
+
+[node name="MessageText" type="Label" parent="DeathMessage"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("7")
+text = "YOU DIED!
+
+Player seems to have been expunged by %s.
+
+Press ESCAPE to continue..."
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="DeathMenu" parent="." instance=ExtResource("11")]
+process_mode = 3
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.5
+offset_top = -111.5
+offset_right = 71.5
+offset_bottom = 111.5
+
+[node name="SavingMessage" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.5
+offset_top = 5.0
+offset_right = 40.5
+offset_bottom = 31.0
+theme_override_styles/panel = ExtResource("8")
+script = ExtResource("12")
+
+[node name="Label" type="Label" parent="SavingMessage"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("8")
+text = "saving..."
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Timer" type="Timer" parent="SavingMessage"]
+wait_time = 0.6
+one_shot = true
+
+[node name="LoadingMessage" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.0
+offset_top = 5.0
+offset_right = 45.0
+offset_bottom = 31.0
+theme_override_styles/panel = ExtResource("8")
+script = ExtResource("13")
+
+[node name="Label" type="Label" parent="LoadingMessage"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("8")
+text = "loading..."
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Timer" type="Timer" parent="LoadingMessage"]
+one_shot = true
+
+[node name="HUDSound" type="AudioStreamPlayer" parent="."]
+bus = &"GUI"
+
+[connection signal="timeout" from="FPSLabel/Timer" to="FPSLabel" method="_on_Timer_timeout"]
+[connection signal="timeout" from="BlinkMeter/BlinkTime" to="BlinkMeter" method="_on_BlinkTime_timeout"]
+[connection signal="timeout" from="SavingMessage/Timer" to="SavingMessage" method="_on_Timer_timeout"]
+[connection signal="timeout" from="LoadingMessage/Timer" to="LoadingMessage" method="_on_Timer_timeout"]

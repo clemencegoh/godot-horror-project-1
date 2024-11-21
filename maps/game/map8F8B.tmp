@@ -1,0 +1,298 @@
+[gd_scene load_steps=17 format=4 uid="uid://ceha80ab6ioeb"]
+
+[ext_resource type="Texture2D" uid="uid://bydri4263vwif" path="res://textures/tilemap/A5.png" id="1_2ymbs"]
+[ext_resource type="TileSet" uid="uid://ifqtrgh3460o" path="res://maps/game/tilesets/Walls.tres" id="2_pqdmt"]
+[ext_resource type="Texture2D" uid="uid://dyxumax2jkfxt" path="res://textures/decal/blood1.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://tggvmj5hf1sn" path="res://textures/decal/blood_drop1.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://lkgmbxrhetxt" path="res://textures/decal/blood_drag1.png" id="5"]
+[ext_resource type="PackedScene" uid="uid://r1nn4brs4uhp" path="res://scenes/facility/door.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/furniture/WoddenDesk.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://scenes/furniture/WoddenCornerDesk.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://scenes/item/keycard/keycard_level1.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://scenes/item/keycard/keycard_level2.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://b5hahte06un3t" path="res://scenes/player/player.tscn" id="11"]
+[ext_resource type="FontFile" uid="uid://cn5qeqjqykham" path="res://fonts/connection_ii/ConnectionII.otf" id="14"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4k3er"]
+texture = ExtResource("1_2ymbs")
+texture_region_size = Vector2i(48, 48)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+7:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+0:8/0 = 0
+1:8/0 = 0
+0:13/0 = 0
+0:14/0 = 0
+1:14/0 = 0
+0:15/0 = 0
+1:15/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_5ysa8"]
+tile_size = Vector2i(48, 48)
+sources/0 = SubResource("TileSetAtlasSource_4k3er")
+
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("14")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+cache/0/24/0/ascent = 0.0
+cache/0/24/0/descent = 0.0
+cache/0/24/0/underline_position = 0.0
+cache/0/24/0/underline_thickness = 0.0
+cache/0/24/0/scale = 1.0
+cache/0/8/0/ascent = 0.0
+cache/0/8/0/descent = 0.0
+cache/0/8/0/underline_position = 0.0
+cache/0/8/0/underline_thickness = 0.0
+cache/0/8/0/scale = 1.0
+cache/0/12/0/ascent = 0.0
+cache/0/12/0/descent = 0.0
+cache/0/12/0/underline_position = 0.0
+cache/0/12/0/underline_thickness = 0.0
+cache/0/12/0/scale = 1.0
+
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(26, 26)
+
+[node name="World" type="Node2D"]
+
+[node name="Navigation" type="Node2D" parent="."]
+
+[node name="Map" type="Node2D" parent="Navigation"]
+
+[node name="DarknessLayer" type="CanvasModulate" parent="Navigation/Map"]
+visible = false
+top_level = true
+color = Color(0, 0, 0, 1)
+
+[node name="School1" type="TileMapLayer" parent="Navigation/Map"]
+tile_map_data = PackedByteArray("AAAEAPz/AAAAAAAAAAAEAP3/AAAAAAAAAAAEAP7/AAAAAAAAAAAEAP//AAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAPz/AAAAAAAAAAAFAP3/AAAAAAAAAAAFAP7/AAAAAAAAAAAFAP//AAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAPz/AAAAAAAAAAAGAP3/AAAAAAAAAAAGAP7/AAAAAAAAAAAGAP//AAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAPz/AAAAAAAAAAAHAP3/AAAAAAAAAAAHAP7/AAAAAAAAAAAHAP//AAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAIAPz/AAAAAAAAAAAIAP3/AAAAAAAAAAAIAP7/AAAAAAAAAAAIAP//AAAAAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAJAPz/AAAAAAAAAAAJAP3/AAAAAAAAAAAJAP7/AAAAAAAAAAAJAP//AAAAAAAAAAAJAAAAAAAAAAAAAAAJAAEAAAAAAAAAAAAJAAIAAAAAAAAAAAAJAAMAAAAAAAAAAAAKAPz/AAAAAAAAAAAKAP3/AAAAAAAAAAAKAP7/AAAAAAAAAAAKAP//AAAAAAAAAAAKAAAAAAAAAAAAAAAKAAEAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAMAAAAAAAAAAAALAPz/AAAAAAAAAAALAP3/AAAAAAAAAAALAP7/AAAAAAAAAAALAP//AAAAAAAAAAALAAAAAAAAAAAAAAALAAEAAAAAAAAAAAALAAIAAAAAAAAAAAALAAMAAAAAAAAAAAAMAPz/AAAAAAAAAAAMAP3/AAAAAAAAAAAMAP7/AAAAAAAAAAAMAP//AAAAAAAAAAAMAAAAAAAAAAAAAAAMAAEAAAAAAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAANAPz/AAAAAAAAAAANAP3/AAAAAAAAAAANAP7/AAAAAAAAAAANAP//AAAAAAAAAAANAAAAAAAAAAAAAAANAAEAAAAAAAAAAAANAAIAAAAAAAAAAAANAAMAAAAAAAAAAAAOAPz/AAAAAAAAAAAOAP3/AAAAAAAAAAAOAP7/AAAAAAAAAAAOAP//AAAAAAAAAAAOAAAAAAAAAAAAAAAOAAEAAAAAAAAAAAAOAAIAAAAAAAAAAAAOAAMAAAAAAAAAAAAPAPz/AAAAAAAAAAAPAP3/AAAAAAAAAAAPAP7/AAAAAAAAAAAPAP//AAAAAAAAAAAPAAAAAAAAAAAAAAAPAAEAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAQAPz/AAAAAAAAAAAQAP3/AAAAAAAAAAAQAP7/AAAAAAAAAAAQAP//AAAAAAAAAAAQAAAAAAAAAAAAAAAQAAEAAAAAAAAAAAAQAAIAAAAAAAAAAAAQAAMAAAAAAAAAAAAFAPv/AAAAAAAAAAD///r/AAAAAAAAAAD///v/AAAAAAAAAAAAAPr/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPr/AAAAAAAAAAABAPv/AAAAAAAAAAACAPr/AAAAAAAAAAACAPv/AAAAAAAAAAADAPr/AAAAAAAAAAADAPv/AAAAAAAAAAAEAPr/AAAAAAAAAAAEAPv/AAAAAAAAAAAFAPr/AAAAAAAAAAAGAPr/AAAAAAAAAAAGAPv/AAAAAAAAAAAHAPr/AAAAAAAAAAAHAPv/AAAAAAAAAAAIAPr/AAAAAAAAAAAIAPv/AAAAAAAAAAAJAPr/AAAAAAAAAAAJAPv/AAAAAAAAAAAKAPr/AAAAAAAAAAAKAPv/AAAAAAAAAAALAPr/AAAAAAAAAAALAPv/AAAAAAAAAAAMAPr/AAAAAAAAAAAMAPv/AAAAAAAAAAANAPr/AAAAAAAAAAANAPv/AAAAAAAAAAAOAPr/AAAAAAAAAAAOAPv/AAAAAAAAAAAPAPr/AAAAAAAAAAAPAPv/AAAAAAAAAAAQAPr/AAAAAAAAAAAQAPv/AAAAAAAAAAARAPr/AAAAAAAAAAARAPv/AAAAAAAAAAASAPr/AAAAAAAAAAASAPv/AAAAAAAAAAATAPr/AAAAAAAAAAATAPv/AAAAAAAAAAAUAPr/AAAAAAAAAAAUAPv/AAAAAAAAAAD8//z/AAAAAAAAAAD9//z/AAAAAAAAAAD+//z/AAAAAAAAAAD///z/AAAAAAAAAAAAAPz/AAAAAAAAAAABAPz/AAAAAAAAAAACAPz/AAAAAAAAAAADAPz/AAAAAAAAAAD7//r/AAAAAAAAAAD7//v/AAAAAAAAAAD7//z/AAAAAAAAAAD8//r/AAAAAAAAAAD8//v/AAAAAAAAAAD9//r/AAAAAAAAAAD9//v/AAAAAAAAAAD+//r/AAAAAAAAAAD+//v/AAAAAAAAAAARAPz/AAAAAAAAAAASAPz/AAAAAAAAAAATAPz/AAAAAAAAAAAUAPz/AAAAAAAAAAAVAPr/AAAAAAAAAAAVAPv/AAAAAAAAAAAVAPz/AAAAAAAAAAAWAPr/AAAAAAAAAAAWAPv/AAAAAAAAAAAWAPz/AAAAAAAAAAAXAPr/AAAAAAAAAAAXAPv/AAAAAAAAAAAXAPz/AAAAAAAAAAAYAPr/AAAAAAAAAAAYAPv/AAAAAAAAAAAYAPz/AAAAAAAAAAAZAPr/AAAAAAAAAAAZAPv/AAAAAAAAAAAZAPz/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_5ysa8")
+
+[node name="Walls" type="TileMapLayer" parent="Navigation/Map"]
+top_level = true
+tile_map_data = PackedByteArray("AAAMAPr/AQANABEAAAAMAPv/AQANABEAAAANAPr/AQANABEAAAANAPv/AQANABEAAAAOAPr/AQANABEAAAAOAPv/AQANABEAAAAPAPr/AQANABEAAAAPAPv/AQANABEAAAAQAPr/AQANABEAAAAQAPv/AQANABEAAAARAPr/AQANABEAAAARAPv/AQANABEAAAASAPr/AQANABEAAAASAPv/AQANABEAAAATAPr/AQANABEAAAATAPv/AQANABEAAAAUAPr/AQANABEAAAAUAPv/AQANABEAAAAVAPr/AQANABEAAAAVAPv/AQANABEAAAAWAPr/AQANABEAAAAWAPv/AQANABEAAAAXAPr/AQANABEAAAAXAPv/AQANABEAAAAYAPr/AQANABEAAAAYAPv/AQANABEAAAAZAPr/AQANABEAAAAZAPv/AQANABEAAAAaAPr/AQANABEAAAAaAPv/AQANABEAAAAbAPr/AQANABEAAAAbAPv/AQANABEAAAAcAPr/AQANABEAAAAcAPv/AQANABEAAAAdAPr/AQANABEAAAAdAPv/AQANABEAAAAeAPr/AQANABEAAAAeAPv/AQANABEAAAAfAPr/AQANABEAAAAfAPv/AQANABEAAAAJAPn/AQABAAoAAAAJAPr/AQACAAsAAAAJAPv/AQACAAsAAAAJAPz/AQACAAsAAAAJAP3/AQACAAsAAAAJAP7/AQACAAsAAAAJAP//AQACAAsAAAAJAAAAAQACAAsAAAAJAAEAAQACAAsAAAAJAAIAAQACAAsAAAAJAAMAAQACAAsAAAAJAAQAAQACAAsAAAAJAAUAAQACAAsAAAAKAAUAAQACAAsAAAALAAUAAQACAAsAAAAMAAUAAQACAAsAAAANAAUAAQACAAsAAAAOAAUAAQACAAsAAAAPAAUAAQACAAsAAAAQAAUAAQACAAsAAAARAAUAAQACAAsAAAASAAUAAQACAAsAAAATAAUAAQACAAsAAAAUAAUAAQACAAsAAAAVAAUAAQACAAsAAAAWAAUAAQACAAsAAAAXAAUAAQACAAsAAAAYAAUAAQACAAsAAAAZAAUAAQACAAsAAAAaAAUAAQACAAsAAAAbAAUAAQACAAsAAAAcAAUAAQACAAsAAAAdAAUAAQACAAsAAAAeAAUAAQACAAsAAAAfAAUAAQACAAsAAAAgAAUAAQACAAsAAAAgAPr/AQACAAsAAAAgAPv/AQACAAsAAAAgAPz/AQACAAsAAAAgAP3/AQACAAsAAAAgAP7/AQACAAsAAAAgAP//AQACAAsAAAAgAAAAAQACAAsAAAAgAAEAAQACAAsAAAAgAAIAAQACAAsAAAAgAAMAAQACAAsAAAAgAAQAAQACAAsAAAAKAPj/AwAVABoAAAAKAPn/AwAVABsAAAAKAPr/AwAVABwAAAAKAPv/AwAVAB0AAAALAPj/AwAWABoAAAALAPn/AwAWABsAAAALAPr/AwAWABwAAAALAPv/AwAWAB0AAAAMAPn/AQABAAoAAAANAPn/AQABAAoAAAAOAPn/AQABAAoAAAAPAPn/AQABAAoAAAAQAPn/AQABAAoAAAARAPn/AQABAAoAAAASAPn/AQABAAoAAAATAPn/AQABAAoAAAAUAPn/AQABAAoAAAAVAPn/AQABAAoAAAAWAPn/AQABAAoAAAAXAPn/AQABAAoAAAAYAPn/AQABAAoAAAAZAPn/AQABAAoAAAAaAPn/AQABAAoAAAAbAPn/AQABAAoAAAAcAPn/AQABAAoAAAAdAPn/AQABAAoAAAAeAPn/AQABAAoAAAAfAPn/AQABAAoAAAAgAPn/AQACAAsAAAA=")
+tile_set = ExtResource("2_pqdmt")
+
+[node name="Decorations" type="TileMapLayer" parent="Navigation/Map"]
+top_level = true
+tile_map_data = PackedByteArray("AAAcAPn/BAASAAAAAAAcAPr/BAASAAEAAAAcAPv/BAASAAIAAAAcAPz/BAASAAMAAAAcAP3/BAASAAQAAAAdAPn/BAATAAAAAAAdAPr/BAATAAEAAAAdAPv/BAATAAIAAAAdAPz/BAATAAMAAAAdAP3/BAATAAQAAAAeAPn/BAAUAAAAAAAeAPr/BAAUAAEAAAAeAPv/BAAUAAIAAAAeAPz/BAAUAAMAAAAeAP3/BAAUAAQAAAAfAPn/BAAVAAAAAAAfAPr/BAAVAAEAAAAfAPv/BAAVAAIAAAAfAPz/BAAVAAMAAAAfAP3/BAAVAAQAAAAFAAEABAASAAYAAAANAPr/BAAQABAAAAANAPv/BAAQABEAAAANAPz/BAAQABIAAAANAP3/BAAQABMAAAAOAPr/BAARABAAAAAOAPv/BAARABEAAAAOAPz/BAARABIAAAAOAP3/BAARABMAAAA=")
+tile_set = ExtResource("2_pqdmt")
+
+[node name="Label" type="Label" parent="Navigation"]
+offset_left = 435.0
+offset_top = -21.0
+offset_right = 633.0
+offset_bottom = 119.0
+theme_override_fonts/font = SubResource("2")
+theme_override_font_sizes/font_size = 16
+text = "\"Shift\" to run.
+\"E\" to interact.
+\"F\" for flashlight.
+
+
+
+But you can't run without 
+your walking stick...
+"
+
+[node name="Player" parent="." instance=ExtResource("11")]
+top_level = true
+position = Vector2(395, 28)
+
+[node name="Legacy" type="Node2D" parent="."]
+visible = false
+position = Vector2(-999, -999)
+
+[node name="Decals" type="Node2D" parent="Legacy"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Legacy/Decals"]
+position = Vector2(97.2646, 55.1166)
+texture = ExtResource("3")
+
+[node name="Sprite2" type="Sprite2D" parent="Legacy/Decals"]
+position = Vector2(308.005, -9.1861)
+texture = ExtResource("4")
+
+[node name="Sprite3" type="Sprite2D" parent="Legacy/Decals"]
+position = Vector2(261.208, 85.1625)
+rotation = 1.5708
+scale = Vector2(2, 1.5)
+texture = ExtResource("5")
+
+[node name="Doors" type="Node2D" parent="Legacy"]
+visible = false
+
+[node name="Door" parent="Legacy/Doors" instance=ExtResource("6")]
+position = Vector2(320, 615)
+
+[node name="Door2" parent="Legacy/Doors" instance=ExtResource("6")]
+position = Vector2(80, 106)
+door_clearance = 2
+
+[node name="Door3" parent="Legacy/Doors" instance=ExtResource("6")]
+position = Vector2(48, 695)
+
+[node name="Door4" parent="Legacy/Doors" instance=ExtResource("6")]
+position = Vector2(224, 696)
+door_clearance = 1
+
+[node name="Door5" parent="Legacy/Doors" instance=ExtResource("6")]
+position = Vector2(928, 615)
+
+[node name="Door6" parent="Legacy/Doors" instance=ExtResource("6")]
+position = Vector2(-248, 256)
+rotation = 1.5708
+
+[node name="Door7" parent="Legacy/Doors" instance=ExtResource("6")]
+position = Vector2(-248, 320)
+rotation = 1.5708
+
+[node name="Door8" parent="Legacy/Doors" instance=ExtResource("6")]
+position = Vector2(-248, 480)
+rotation = 1.5708
+
+[node name="Door9" parent="Legacy/Doors" instance=ExtResource("6")]
+position = Vector2(120, 240)
+rotation = 1.5708
+
+[node name="Door10" parent="Legacy/Doors" instance=ExtResource("6")]
+position = Vector2(232, 240)
+rotation = 1.5708
+door_open = true
+
+[node name="Door11" parent="Legacy/Doors" instance=ExtResource("6")]
+position = Vector2(120, 144)
+rotation = 1.5708
+
+[node name="Door12" parent="Legacy/Doors" instance=ExtResource("6")]
+position = Vector2(296, 240)
+rotation = 1.5708
+
+[node name="Door13" parent="Legacy/Doors" instance=ExtResource("6")]
+position = Vector2(-152, 656)
+rotation = 1.5708
+
+[node name="Door14" parent="Legacy/Doors" instance=ExtResource("6")]
+position = Vector2(264, 105)
+scale = Vector2(1.5, 1)
+
+[node name="Door15" parent="Legacy/Doors" instance=ExtResource("6")]
+position = Vector2(264, 327)
+scale = Vector2(1.5, 1)
+door_clearance = 1
+
+[node name="Door16" parent="Legacy/Doors" instance=ExtResource("6")]
+position = Vector2(64, 615)
+scale = Vector2(2, 1)
+
+[node name="Door17" parent="Legacy/Doors" instance=ExtResource("6")]
+position = Vector2(1032, 656)
+rotation = 1.5708
+
+[node name="Door18" parent="Legacy/Doors" instance=ExtResource("6")]
+position = Vector2(928, 321)
+
+[node name="Door19" parent="Legacy/Doors" instance=ExtResource("6")]
+position = Vector2(512, 605)
+gate_partner_path = NodePath("../Door20")
+door_clearance = 1
+
+[node name="Door20" parent="Legacy/Doors" instance=ExtResource("6")]
+position = Vector2(512, 433)
+gate_partner_path = NodePath("../Door19")
+door_open = true
+door_clearance = 1
+
+[node name="Furniture" type="Node2D" parent="Legacy"]
+visible = false
+
+[node name="WoddenDesk" parent="Legacy/Furniture" instance=ExtResource("7")]
+position = Vector2(336, 311)
+
+[node name="WoddenCornerDesk" parent="Legacy/Furniture" instance=ExtResource("8")]
+position = Vector2(382, 208)
+rotation = -1.5708
+
+[node name="Items" type="Node2D" parent="Legacy"]
+visible = false
+
+[node name="KeycardLevel1" parent="Legacy/Items" instance=ExtResource("9")]
+position = Vector2(24.3837, 15.1179)
+
+[node name="KeycardLevel2" parent="Legacy/Items" instance=ExtResource("9")]
+position = Vector2(381, 229)
+
+[node name="KeycardLevel3" parent="Legacy/Items" instance=ExtResource("9")]
+position = Vector2(116.067, 29.2605)
+
+[node name="KeycardLevel4" parent="Legacy/Items" instance=ExtResource("9")]
+position = Vector2(58.521, 23.8961)
+
+[node name="KeycardLevel5" parent="Legacy/Items" instance=ExtResource("9")]
+position = Vector2(141.426, -10.7289)
+
+[node name="KeycardLevel6" parent="Legacy/Items" instance=ExtResource("9")]
+position = Vector2(63.3977, -20.4823)
+
+[node name="KeycardLevel7" parent="Legacy/Items" instance=ExtResource("9")]
+position = Vector2(61.9347, 74.1266)
+
+[node name="KeycardLevel8" parent="Legacy/Items" instance=ExtResource("9")]
+position = Vector2(252.616, -8.29048)
+
+[node name="KeycardLevel9" parent="Legacy/Items" instance=ExtResource("10")]
+position = Vector2(261.881, 41.4523)
+
+[node name="FacilityTestBox" type="RigidBody2D" parent="Legacy"]
+visible = false
+position = Vector2(150, 55)
+linear_damp = 25.0
+angular_damp = 25.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Legacy/FacilityTestBox"]
+shape = SubResource("1")
+
+[node name="ColorRect" type="ColorRect" parent="Legacy/FacilityTestBox"]
+offset_left = -13.0
+offset_top = -13.0
+offset_right = 13.0
+offset_bottom = 13.0
+color = Color(0.439216, 0.345098, 0.345098, 1)

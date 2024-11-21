@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://1nhg8noc8bwx"]
+
+[ext_resource type="StyleBox" path="res://textures/hud/in_game_menu.tres" id="1"]
+[ext_resource type="Script" path="res://src/game/hud/in_game_menu/in_game_menu.gd" id="2"]
+[ext_resource type="FontFile" uid="uid://cn5qeqjqykham" path="res://fonts/connection_ii/ConnectionII.otf" id="3"]
+[ext_resource type="Script" path="res://src/game/hud/in_game_menu/resume_button.gd" id="4"]
+[ext_resource type="Script" path="res://src/game/hud/menu/quit_button.gd" id="5"]
+
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("3"), ExtResource("3")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[node name="InGameMenu" type="PanelContainer"]
+offset_right = 143.0
+offset_bottom = 302.0
+theme_override_styles/panel = ExtResource("1")
+script = ExtResource("2")
+
+[node name="MenuTree" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="HeaderLabel" type="Label" parent="MenuTree"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("1")
+text = "Menu"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="MenuTree"]
+layout_mode = 2
+focus_mode = 0
+text = "Resume"
+script = ExtResource("4")
+
+[node name="SaveButton" type="Button" parent="MenuTree"]
+layout_mode = 2
+focus_mode = 0
+disabled = true
+text = "Save"
+
+[node name="LoadButton" type="Button" parent="MenuTree"]
+layout_mode = 2
+focus_mode = 0
+disabled = true
+text = "Load"
+
+[node name="OptionsButton" type="Button" parent="MenuTree"]
+layout_mode = 2
+focus_mode = 0
+disabled = true
+text = "Options"
+
+[node name="QuitButton" type="Button" parent="MenuTree"]
+layout_mode = 2
+focus_mode = 0
+text = "Quit"
+script = ExtResource("5")
+
+[connection signal="pressed" from="MenuTree/ResumeButton" to="MenuTree/ResumeButton" method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="MenuTree/QuitButton" to="MenuTree/QuitButton" method="_on_QuitButton_pressed"]

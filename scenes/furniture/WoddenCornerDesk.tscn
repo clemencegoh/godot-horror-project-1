@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://textures/furniture/wodden_desk_corner.png" type="Texture2D" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 11, 7 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 5, 12 )
+
+[node name="WoddenCornerDesk" type="StaticBody2D"]
+scale = Vector2( 2, 2 )
+
+[node name="CollisionShape3D" type="CollisionShape2D" parent="."]
+position = Vector2( -5, 2 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2" type="CollisionShape2D" parent="."]
+position = Vector2( 11, -3 )
+shape = SubResource( 2 )
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource( 1 )

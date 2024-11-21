@@ -1,0 +1,46 @@
+[gd_resource type="Animation" load_steps=2 format=2]
+
+[ext_resource path="res://sounds/interact/keycard_use2.ogg" type="AudioStream" id=1]
+
+[resource]
+resource_name = "door_error"
+length = 0.85
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("../DoorStatus:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PackedFloat32Array( 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PackedFloat32Array( 1.03526, 1.07177, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 0.4, 0, 1 ), Color( 0.721569, 0, 0, 1 ), Color( 1, 0.4, 0, 1 ), Color( 0.721569, 0, 0, 1 ), Color( 1, 0.4, 0, 1 ), Color( 0.721569, 0, 0, 1 ), Color( 0.235294, 0.372549, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../DoorStatus2:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PackedFloat32Array( 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 0.4, 0, 1 ), Color( 0.721569, 0, 0, 1 ), Color( 1, 0.4, 0, 1 ), Color( 0.721569, 0, 0, 1 ), Color( 1, 0.4, 0, 1 ), Color( 0.721569, 0, 0, 1 ), Color( 0.235294, 0.372549, 1, 1 ) ]
+}
+tracks/2/type = "audio"
+tracks/2/path = NodePath("../KeycardSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"clips": [ {
+"end_offset": 0.1,
+"start_offset": 0.2,
+"stream": ExtResource( 1 )
+} ],
+"times": PackedFloat32Array( 0 )
+}

@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://c3srmfrpk2660"]
+
+[ext_resource type="Script" path="res://scenes/item/door_2.gd" id="1_ln7vk"]
+[ext_resource type="Texture2D" uid="uid://bbirndihwhy7d" path="res://textures/tilemap/Inside_E.png" id="1_n1c1w"]
+[ext_resource type="AudioStream" uid="uid://cru5337lkm2wc" path="res://sounds/interact/drop_item1.ogg" id="3_s4xru"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qnb56"]
+size = Vector2(7, 52)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pe7ym"]
+polygon = PackedVector2Array(-24, -43, -24, 0, -23, 0, -23, -42, 23, -42, 23, 0, 24, 0, 24, -43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rnoap"]
+size = Vector2(47, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kv0od"]
+size = Vector2(45, 20.75)
+
+[node name="door2" type="StaticBody2D"]
+script = ExtResource("1_ln7vk")
+
+[node name="DoorOpenSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_n1c1w")
+offset = Vector2(-20, 0)
+region_enabled = true
+region_rect = Rect2(506, 634, 7, 86)
+
+[node name="DoorOpenCollision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-19.5, 16)
+shape = SubResource("RectangleShape2D_qnb56")
+
+[node name="DoorClosedOcluder" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_pe7ym")
+
+[node name="DoorClosedSprite" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("1_n1c1w")
+region_enabled = true
+region_rect = Rect2(505, 634, 50, 86)
+
+[node name="DoorClosedCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 22)
+shape = SubResource("RectangleShape2D_rnoap")
+
+[node name="player_detector" type="Area2D" parent="."]
+
+[node name="RegionTop" type="CollisionShape2D" parent="player_detector"]
+position = Vector2(-0.5, -26.375)
+shape = SubResource("RectangleShape2D_kv0od")
+
+[node name="RegionBottom" type="CollisionShape2D" parent="player_detector"]
+position = Vector2(0, 59)
+shape = SubResource("RectangleShape2D_kv0od")
+
+[node name="door_use" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_s4xru")
+
+[connection signal="body_entered" from="player_detector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="player_detector" to="." method="_on_player_detector_body_exited"]
+[connection signal="input_event" from="player_detector" to="." method="_on_player_detector_input_event"]

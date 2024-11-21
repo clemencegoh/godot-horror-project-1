@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://textures/lights_low/light.png" type="Texture2D" id=1]
+[ext_resource path="res://src/game/facility/area_light.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 180.0
+
+[node name="AreaLight" type="PointLight2D"]
+texture = ExtResource( 1 )
+energy = 29.73
+shadow_enabled = true
+shadow_filter = 1
+script = ExtResource( 2 )
+
+[node name="ActivationArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActivationArea"]
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="ActivationArea" to="." method="_on_ActivationArea_body_entered"]
+[connection signal="body_exited" from="ActivationArea" to="." method="_on_ActivationArea_body_exited"]

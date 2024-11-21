@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkrlxhxj2uf2a"]
+
+[ext_resource type="Script" path="res://scenes/item/hideable_wardrobe.gd" id="1_ilia3"]
+[ext_resource type="Texture2D" uid="uid://cwst4ejjw6vnk" path="res://textures/tilemap/Inside_C.png" id="2_s72o7"]
+[ext_resource type="AudioStream" uid="uid://cru5337lkm2wc" path="res://sounds/interact/drop_item1.ogg" id="3_0ywrp"]
+[ext_resource type="AudioStream" uid="uid://six37rylgt88" path="res://sounds/facility/hideable/heartbeat-single.mp3" id="4_u444k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qnb56"]
+size = Vector2(65, 86)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kv0od"]
+size = Vector2(65, 22.5)
+
+[node name="hideable1" type="StaticBody2D"]
+script = ExtResource("1_ilia3")
+
+[node name="DoorOpenSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_s72o7")
+offset = Vector2(-20, 0)
+region_enabled = true
+region_rect = Rect2(445, 17, 71, 98)
+
+[node name="wardrobeCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-19.5, -5)
+shape = SubResource("RectangleShape2D_qnb56")
+
+[node name="player_detector" type="Area2D" parent="."]
+
+[node name="RegionBottom" type="CollisionShape2D" parent="player_detector"]
+position = Vector2(-19.5, 49.25)
+shape = SubResource("RectangleShape2D_kv0od")
+
+[node name="door_use" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_0ywrp")
+
+[node name="heartbeat" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_u444k")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="player_detector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="player_detector" to="." method="_on_player_detector_body_exited"]
+[connection signal="input_event" from="player_detector" to="." method="_on_player_detector_input_event"]

@@ -1,0 +1,283 @@
+[gd_scene load_steps=15 format=3 uid="uid://pvwn1gbrdhdv"]
+
+[ext_resource type="AudioStream" uid="uid://ja6qmfwx0i1l" path="res://music/menu/menu_music_box.ogg" id="1_5v3sf"]
+[ext_resource type="Script" path="res://src/multiplayer/mainMenuController.gd" id="1_7he51"]
+[ext_resource type="Script" path="res://src/sound/main_menu_sound.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://b5hahte06un3t" path="res://scenes/player/player.tscn" id="2_015qf"]
+[ext_resource type="FontFile" uid="uid://dbpy7tf8b2kk6" path="res://fonts/cmu-typewriter/Typewriter/cmuntb.ttf" id="3_t5b5a"]
+[ext_resource type="Script" path="res://src/main_menu/quit_button.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://dytrj7pxccgho" path="res://textures/foundation_logo.svg" id="5"]
+[ext_resource type="FontFile" uid="uid://cn5qeqjqykham" path="res://fonts/connection_ii/ConnectionII.otf" id="6"]
+[ext_resource type="Script" path="res://src/main_menu/menu_sequence.gd" id="7"]
+
+[sub_resource type="Theme" id="Theme_glm2w"]
+
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("6")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/32/0/ascent = 0.0
+cache/0/32/0/descent = 0.0
+cache/0/32/0/underline_position = 0.0
+cache/0/32/0/underline_thickness = 0.0
+cache/0/32/0/scale = 1.0
+
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("6")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/28/0/ascent = 0.0
+cache/0/28/0/descent = 0.0
+cache/0/28/0/underline_position = 0.0
+cache/0/28/0/underline_thickness = 0.0
+cache/0/28/0/scale = 1.0
+
+[sub_resource type="FastNoiseLite" id="3"]
+
+[sub_resource type="NoiseTexture2D" id="4"]
+width = 1024
+noise = SubResource("3")
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("lobby_node", "loading_label")]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -5.0
+offset_right = -3.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7he51")
+player_scene = ExtResource("2_015qf")
+lobby_node = NodePath("LobbyStatus")
+loading_label = NodePath("JoinLoading")
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_5v3sf")
+autoplay = true
+bus = &"Music"
+script = ExtResource("2")
+
+[node name="AlternateMenu" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LoadButton" type="Button" parent="AlternateMenu"]
+layout_mode = 2
+focus_mode = 0
+disabled = true
+text = "LOAD"
+
+[node name="OptionsButton" type="Button" parent="AlternateMenu"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_t5b5a")
+theme_override_font_sizes/font_size = 24
+disabled = true
+text = "OPTIONS"
+
+[node name="CreditsButton" type="Button" parent="AlternateMenu"]
+layout_mode = 2
+focus_mode = 0
+disabled = true
+text = "CREDITS"
+
+[node name="MenuButtons" type="VBoxContainer" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.0
+offset_top = -90.0
+offset_right = 90.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="PlayButton" type="Button" parent="MenuButtons"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_t5b5a")
+theme_override_font_sizes/font_size = 24
+text = "PLAY"
+
+[node name="HostButton" type="Button" parent="MenuButtons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_t5b5a")
+theme_override_font_sizes/font_size = 24
+text = "HOST"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuButtons"]
+texture_filter = 1
+layout_mode = 2
+
+[node name="IPAddressInput" type="LineEdit" parent="MenuButtons/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_glm2w")
+theme_override_fonts/font = ExtResource("3_t5b5a")
+theme_override_font_sizes/font_size = 24
+placeholder_text = "127.0.0.1"
+expand_to_text_length = true
+
+[node name="JoinButton" type="Button" parent="MenuButtons/HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_t5b5a")
+theme_override_font_sizes/font_size = 24
+text = "JOIN"
+
+[node name="QuitButton" type="Button" parent="MenuButtons"]
+layout_mode = 2
+focus_mode = 0
+theme_override_fonts/font = ExtResource("3_t5b5a")
+theme_override_font_sizes/font_size = 24
+text = "QUIT"
+script = ExtResource("4")
+
+[node name="Title" type="TextureRect" parent="."]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -242.0
+offset_top = 20.0
+offset_right = -112.0
+offset_bottom = 150.0
+texture = ExtResource("5")
+expand_mode = 1
+
+[node name="Title1" type="Label" parent="Title"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 47.0
+offset_right = 457.0
+offset_bottom = 86.0
+theme_override_fonts/font = SubResource("1")
+theme_override_font_sizes/font_size = 32
+text = "The Blind and the Cripple"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title2" type="Label" parent="Title"]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 121.0
+offset_right = 285.0
+offset_bottom = 150.0
+theme_override_fonts/font = SubResource("2")
+theme_override_font_sizes/font_size = 28
+text = "Escape."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FoundationLogoDamaged" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -242.0
+offset_top = 20.0
+offset_right = -112.0
+offset_bottom = 150.0
+rotation = 4.0
+texture = ExtResource("5")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="FoundationLogoDamaged"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 85.0
+offset_top = -50.0
+offset_right = 453.0
+offset_bottom = 11.0
+rotation = -3.0
+theme_override_colors/font_color = Color(0.643137, 0.603922, 0.603922, 1)
+theme_override_fonts/font = SubResource("1")
+text = "SCP Foundation"
+
+[node name="Label" type="Label" parent="FoundationLogoDamaged/Label"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 56.0
+offset_right = 366.0
+offset_bottom = 92.0
+rotation = 6.0
+theme_override_colors/font_color = Color(0.517647, 0.419608, 0.419608, 1)
+theme_override_fonts/font = SubResource("2")
+text = "Secure. Contain. Protect."
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource("4")
+script = ExtResource("7")
+
+[node name="TestImage" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.811765)
+
+[node name="Label" type="Label" parent="TestImage"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 21.0
+
+[node name="LobbyStatus" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -430.0
+offset_top = -358.0
+offset_right = -239.0
+offset_bottom = -227.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="LobbyTitle" type="Label" parent="LobbyStatus"]
+layout_mode = 2
+text = "Players in lobby:"
+
+[node name="PlayerLabels" type="VBoxContainer" parent="LobbyStatus"]
+layout_mode = 2
+
+[node name="JoinLoading" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 687.0
+offset_top = 357.0
+offset_right = 756.0
+offset_bottom = 374.0
+text = "Loading..."
+
+[connection signal="finished" from="MenuMusic" to="MenuMusic" method="loop_theme"]
+[connection signal="pressed" from="MenuButtons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MenuButtons/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="text_changed" from="MenuButtons/HBoxContainer/IPAddressInput" to="." method="_on_ip_address_input_text_changed"]
+[connection signal="pressed" from="MenuButtons/HBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="MenuButtons/QuitButton" to="MenuButtons/QuitButton" method="_on_QuitButton_pressed"]
