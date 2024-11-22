@@ -254,7 +254,7 @@ position = Vector2(608, -92)
 [node name="SpawnLocations" type="Node2D" parent="."]
 
 [node name="0" type="Node2D" parent="SpawnLocations" groups=["PlayerSpawn"]]
-position = Vector2(728, -186)
+position = Vector2(384, -182)
 metadata/_edit_group_ = true
 
 [node name="Area2D" type="Area2D" parent="SpawnLocations/0"]

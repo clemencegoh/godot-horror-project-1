@@ -24,3 +24,7 @@ res://scenes/scp/scp-173.tscn
 res://scenes/scp/monster-1.tscn
 res://src/game/scp/173/173.gd
 res://scenes/scp/monster_1.gd
+res://src/sound/interact_sound.gd
+res://src/game/hud/death_menu/death_menu.gd
+res://src/game/hud/death_message.gd
+res://src/game/scp/kill.gd

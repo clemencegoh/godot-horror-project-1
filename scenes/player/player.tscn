@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b5hahte06un3t"]
+[gd_scene load_steps=24 format=3 uid="uid://b5hahte06un3t"]
 
 [ext_resource type="Script" path="res://src/game/player/player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://c52fwe42gxovd" path="res://textures/player/doctor_one.png" id="2_7q7p4"]
@@ -177,6 +177,11 @@ fill = 1
 fill_from = Vector2(0.508547, 0.512821)
 fill_to = Vector2(1, 1)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fmoel"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0vfnh"]
+size = Vector2(825.976, 382.255)
+
 [sub_resource type="CircleShape2D" id="3"]
 radius = 60.0
 
@@ -229,7 +234,6 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_xqpya")
 
 [node name="Flashlight" type="PointLight2D" parent="."]
-visible = false
 position = Vector2(0.45321, -1.50001)
 scale = Vector2(0.32666, 0.282534)
 color = Color(1, 1, 1, 0.521569)
@@ -238,6 +242,15 @@ shadow_color = Color(0, 0, 0, 1)
 texture = ExtResource("3_kajlk")
 offset = Vector2(450, 0)
 script = ExtResource("4_4dh5f")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Flashlight"]
+collision_layer = 2
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_fmoel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flashlight/RigidBody2D"]
+position = Vector2(402.988, -8.84845)
+shape = SubResource("RectangleShape2D_0vfnh")
 
 [node name="MoveSound" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0

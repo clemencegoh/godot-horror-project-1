@@ -56,6 +56,9 @@ radius = 34.2345
 script = ExtResource("1_g5u6y")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 25.0
+target_desired_distance = 15.0
+avoidance_enabled = true
 
 [node name="MonsterModel" type="Sprite2D" parent="."]
 position = Vector2(1, 0)
