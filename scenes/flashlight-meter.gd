@@ -1,4 +1,4 @@
-extends PointLight2D
+extends TextureProgressBar
 
 
 # Called when the node enters the scene tree for the first time.
@@ -8,7 +8,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if is_multiplayer_authority():
-		look_at(get_global_mouse_position()) # rotate to mouse position
-		
-	self.visible = game.player_data['flashlight_on']
+	pass

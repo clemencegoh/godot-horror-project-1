@@ -16,6 +16,10 @@ const BLINK_RATE = .2 #this affects the time it takes for the player to blink
 const BLINK_TIME = .15 #player has eyes closed for this amount of time when blinking
 const BLINK = 100 #maximum player blink level
 
+const FLASHLIGHT_POWER = 150 # maximum player flashlight level
+const FLASHLIGHT_RECHARGE_SPEED = 0.6 # flashlight recharge speed
+const FLASHLIGHT_EXHAUST = 0.3 # flashlight exhaustion rate
+
 # warning-ignore:unused_signal
 signal player_died #signal launched when player dies
 # warning-ignore:unused_signal
@@ -46,6 +50,7 @@ func init_player_data(): #STANDARD VALUES FOR PLAYER DATA
 		"blinking": false,
 		"blink": BLINK,
 		"flashlight_on": false,
+		"flashlight": FLASHLIGHT_POWER,
 	}
 
 func _unhandled_key_input(event):

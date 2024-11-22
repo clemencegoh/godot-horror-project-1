@@ -1,10 +1,12 @@
-[gd_scene load_steps=22 format=3 uid="uid://bm88ukonmbb7r"]
+[gd_scene load_steps=25 format=3 uid="uid://bm88ukonmbb7r"]
 
 [ext_resource type="Script" path="res://src/game/hud/fps_label.gd" id="1"]
 [ext_resource type="Script" path="res://src/game/hud/stamina.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://cmtglghag27j0" path="res://textures/icon/stamina.png" id="3"]
 [ext_resource type="Script" path="res://src/game/effect/blink.gd" id="4"]
+[ext_resource type="Script" path="res://scenes/flashlight_meter.gd" id="4_0sbrb"]
 [ext_resource type="Texture2D" uid="uid://c8qifoqc8vbhc" path="res://textures/icon/blink.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://cqtkxybx0pupk" path="res://scenes/player/flashlight.png" id="5_fnhsx"]
 [ext_resource type="PackedScene" uid="uid://1nhg8noc8bwx" path="res://scenes/hud/in_game_menu.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://chmqacxx78lcw" path="res://scenes/inventory.tscn" id="7"]
 [ext_resource type="StyleBox" path="res://textures/hud/message_box.tres" id="8"]
@@ -13,6 +15,7 @@
 [ext_resource type="PackedScene" path="res://scenes/hud/death_menu.tscn" id="11"]
 [ext_resource type="Script" path="res://src/game/hud/saving_message.gd" id="12"]
 [ext_resource type="Script" path="res://src/game/hud/loading_message.gd" id="13"]
+[ext_resource type="AudioStream" uid="uid://mmpbacy3ggna" path="res://scenes/player/dynamo_flashlight_sound.mp3" id="16_s5086"]
 
 [sub_resource type="Gradient" id="1"]
 offsets = PackedFloat32Array(0)
@@ -79,10 +82,14 @@ script = ExtResource("1")
 autostart = true
 
 [node name="Stamina" type="TextureProgressBar" parent="."]
-offset_left = 47.0
-offset_top = 560.0
-offset_right = 227.0
-offset_bottom = 580.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 69.0
+offset_top = -46.0
+offset_right = 249.0
+offset_bottom = -26.0
+grow_vertical = 0
 step = 0.1
 value = 50.0
 nine_patch_stretch = true
@@ -99,12 +106,39 @@ offset_bottom = 20.0
 texture = ExtResource("3")
 expand_mode = 1
 
+[node name="Flashlight" type="TextureProgressBar" parent="." node_paths=PackedStringArray("flashlight_sound")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 69.0
+offset_top = -78.0
+offset_right = 249.0
+offset_bottom = -58.0
+grow_vertical = 0
+step = 0.1
+value = 50.0
+nine_patch_stretch = true
+texture_under = SubResource("2")
+texture_progress = SubResource("4")
+script = ExtResource("4_0sbrb")
+flashlight_sound = NodePath("../AudioStreamPlayer2D")
+
+[node name="Icon" type="TextureRect" parent="Flashlight"]
+layout_mode = 0
+offset_left = -24.0
+offset_right = -4.0
+offset_bottom = 20.0
+texture = ExtResource("5_fnhsx")
+expand_mode = 1
+
 [node name="BlinkMeter" type="TextureProgressBar" parent="."]
 visible = false
-offset_left = 47.0
-offset_top = 520.0
-offset_right = 227.0
-offset_bottom = 540.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -20.0
+offset_right = 180.0
+grow_vertical = 0
 step = 0.1
 value = 50.0
 nine_patch_stretch = true
@@ -238,6 +272,9 @@ one_shot = true
 
 [node name="HUDSound" type="AudioStreamPlayer" parent="."]
 bus = &"GUI"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_s5086")
 
 [connection signal="timeout" from="FPSLabel/Timer" to="FPSLabel" method="_on_Timer_timeout"]
 [connection signal="timeout" from="BlinkMeter/BlinkTime" to="BlinkMeter" method="_on_BlinkTime_timeout"]

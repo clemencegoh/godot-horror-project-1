@@ -17,3 +17,10 @@ res://scenes/player/flashlight.gd
 res://src/multiplayer/mainMenuController.gd
 res://scenes/item/door_2.gd
 res://README.md
+res://scenes/item/hideable_wardrobe.gd
+res://src/game/game.gd
+res://scenes/flashlight_meter.gd
+res://scenes/scp/scp-173.tscn
+res://scenes/scp/monster-1.tscn
+res://src/game/scp/173/173.gd
+res://scenes/scp/monster_1.gd

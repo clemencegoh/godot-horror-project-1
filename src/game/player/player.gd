@@ -3,7 +3,6 @@ extends CharacterBody2D
 @onready var MoveSound = get_node("MoveSound")
 @onready var SoundTimer = MoveSound.get_node("Timer")
 @onready var SoundPlayer = get_node("SoundEffects")
-@onready var Flashlight = get_node("./Flashlight")
 
 var inv_visible = false
 var can_move = true
@@ -82,10 +81,7 @@ func _unhandled_key_input(event):
 		if Input.is_action_pressed("action2"):
 			var newFlashlightValue = !game.player_data["flashlight_on"]
 			game.player_data["flashlight_on"] = newFlashlightValue
-			if !newFlashlightValue and Flashlight.visible:
-				Flashlight.visible = false
-			elif newFlashlightValue and !Flashlight.visible:
-				Flashlight.visible = true
+
 
 func move_sound(stream, delay): #sound handling
 	if !MoveSound.is_playing() and SoundTimer.is_stopped():
