@@ -28,6 +28,8 @@ signal loading_started #signal launched when loading a new map has started
 signal loading_finished #signal launched when loading a new map has ended
 signal saving_started #emitted when saving data has started
 signal saving_finished #saving the current level has finished
+signal monster_spotted_in_flashlight # signal when monster is caught in flashlight
+signal monster_not_in_flashlight # signal when monster is no longer in flashlight
 
 var player_data # THIS HOLDS ALL PLAYER DATA
 

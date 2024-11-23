@@ -21,15 +21,11 @@ func _on_player_detector_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_in_range = true
 		player_object = body
-	print("player in range of hideable?", player_in_range)
-
 
 func _on_player_detector_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		player_in_range = false
 		player_object = null
-	print("player in range of hideable?", player_in_range)
-
 
 
 func _input(event):

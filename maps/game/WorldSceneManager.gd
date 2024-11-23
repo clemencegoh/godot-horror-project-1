@@ -6,7 +6,6 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var index = 0
-	print('players', game.players)
 	for i in game.players:
 		var currentPlayer = PlayerScene.instantiate()
 		currentPlayer.name = str(game.players[i].id)

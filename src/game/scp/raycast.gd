@@ -15,13 +15,13 @@ func _on_RayCastArea_body_exited(body):
 
 func _physics_process(delta):
 	if enabled:
-		#target_position = to_local(AreaTarget.position)
-		#
-		#if get_collider() == AreaTarget: #if enemy sees target
-			#TargetNode = AreaTarget
-			#game.emit_signal("player_spotted") #mark player as spotted
-		#else:
-			#TargetNode = null
+		target_position = to_local(AreaTarget.position)
+		
+		if get_collider() == AreaTarget: # if enemy sees target
+			TargetNode = AreaTarget
+			game.emit_signal("player_spotted") #mark player as spotted
+		else:
+			TargetNode = null
 		
 		queue_redraw()
 

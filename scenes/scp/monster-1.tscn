@@ -6,6 +6,21 @@
 [ext_resource type="Script" path="res://src/game/scp/raycast.gd" id="4"]
 [ext_resource type="Script" path="res://src/game/scp/kill.gd" id="5"]
 
+[sub_resource type="Animation" id="Animation_j7dxp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MonsterModel:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_wainr"]
 resource_name = "monster_idle"
 loop_mode = 1
@@ -20,21 +35,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_j7dxp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MonsterModel:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8w300"]
@@ -52,13 +52,12 @@ radius = 400.0
 [sub_resource type="CircleShape2D" id="3"]
 radius = 34.2345
 
-[node name="Monster1" type="CharacterBody2D" groups=["Save"]]
+[node name="Monster1" type="CharacterBody2D" groups=["Save", "monster"]]
 script = ExtResource("1_g5u6y")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 25.0
 target_desired_distance = 15.0
-avoidance_enabled = true
 
 [node name="MonsterModel" type="Sprite2D" parent="."]
 position = Vector2(1, 0)
@@ -82,6 +81,7 @@ default_color = Color(1, 0.984314, 0, 1)
 script = ExtResource("3")
 
 [node name="RayCastTarget" type="RayCast2D" parent="."]
+enabled = false
 target_position = Vector2(0, 0)
 script = ExtResource("4")
 

@@ -57,3 +57,4 @@ func load_stream(dir, m = 8): # Search for correct sound files
 func load_death_sounds(): #array name must be the same as scene name!
 	death_sounds["SCP-173"] = load_stream("scp/173/neck_snap", 3)
 	death_sounds["SCP-017"] = load_stream("scp/017/catch", 1)
+	death_sounds["Monster1"] = load_stream("scp/017/catch", 1)

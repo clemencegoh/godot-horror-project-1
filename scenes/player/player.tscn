@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b5hahte06un3t"]
+[gd_scene load_steps=23 format=3 uid="uid://b5hahte06un3t"]
 
 [ext_resource type="Script" path="res://src/game/player/player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://c52fwe42gxovd" path="res://textures/player/doctor_one.png" id="2_7q7p4"]
@@ -177,10 +177,8 @@ fill = 1
 fill_from = Vector2(0.508547, 0.512821)
 fill_to = Vector2(1, 1)
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fmoel"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0vfnh"]
-size = Vector2(825.976, 382.255)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ny3dj"]
+size = Vector2(844.344, 488.437)
 
 [sub_resource type="CircleShape2D" id="3"]
 radius = 60.0
@@ -243,14 +241,11 @@ texture = ExtResource("3_kajlk")
 offset = Vector2(450, 0)
 script = ExtResource("4_4dh5f")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="Flashlight"]
-collision_layer = 2
-collision_mask = 2
-physics_material_override = SubResource("PhysicsMaterial_fmoel")
+[node name="Area2D" type="Area2D" parent="Flashlight" groups=["flashlight"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Flashlight/RigidBody2D"]
-position = Vector2(402.988, -8.84845)
-shape = SubResource("RectangleShape2D_0vfnh")
+[node name="FlashlightArea" type="CollisionShape2D" parent="Flashlight/Area2D"]
+position = Vector2(412.172, -1.76967)
+shape = SubResource("RectangleShape2D_ny3dj")
 
 [node name="MoveSound" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0
@@ -296,6 +291,9 @@ color = Color(1, 0.905882, 0.87451, 1)
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_m1xp2")
 
+[connection signal="visibility_changed" from="Flashlight" to="Flashlight" method="_on_visibility_changed"]
+[connection signal="body_entered" from="Flashlight/Area2D" to="Flashlight" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Flashlight/Area2D" to="Flashlight" method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="MoveSound/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="body_entered" from="Legacy/ScareArea" to="Legacy/RayCastSCP" method="_on_ScareArea_body_entered"]
 [connection signal="body_exited" from="Legacy/ScareArea" to="Legacy/RayCastSCP" method="_on_ScareArea_body_exited"]

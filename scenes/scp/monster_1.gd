@@ -6,11 +6,15 @@ var movement_speed = 50.0
 @onready var navigation_agent_2d = $NavigationAgent2D
 @onready var animation_player: AnimationPlayer = $"./MonsterModel/AnimationPlayer"
 
+var caught_in_flashlight = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("PLAYING ANIMATION")
 	animation_player.play("monster_idle")
 	call_deferred("seeker_setup")
+	game.connect("monster_spotted_in_flashlight", Callable(self, "monster_freeze"))
+	game.connect("monster_not_in_flashlight", Callable(self, "monster_unfreeze"))
 	#pass # Replace with function body.
 #
 func seeker_setup():
@@ -25,7 +29,11 @@ func acquire_target():
 	if len(players_around) > 0:
 		var new_target = players_around[0]
 		target = new_target
-		print(new_target)
+
+func monster_freeze():
+	self.caught_in_flashlight = true
+func monster_unfreeze():
+	self.caught_in_flashlight = false
 #
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -45,11 +53,11 @@ func _physics_process(delta):
 	else:
 		_on_navigation_agent_2d_velocity_computed(new_velocity)
 	
-	move_and_slide()
-	#animated_sprite_2d.flip_h = false if velocity.x > 0 else true
-	pass
+	if !caught_in_flashlight:
+		move_and_slide()
 
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity):
 	velocity = safe_velocity
 	pass # Replace with function body.
+	

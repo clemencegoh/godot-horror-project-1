@@ -37,6 +37,11 @@ window/stretch/aspect="expand"
 mouse_cursor/custom_image="res://textures/cursor.png"
 mouse_cursor/custom_image_hotspot=Vector2(8, 8)
 
+[global_group]
+
+flashlight="flashlight area"
+monster=""
+
 [gui]
 
 theme/custom_font="res://fonts/connection_ii/ConnectionII.tres"
