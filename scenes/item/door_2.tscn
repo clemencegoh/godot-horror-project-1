@@ -40,6 +40,12 @@ texture = ExtResource("1_n1c1w")
 region_enabled = true
 region_rect = Rect2(505, 634, 50, 86)
 
+[node name="DoorLockedSprite" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("1_n1c1w")
+region_enabled = true
+region_rect = Rect2(403, 633, 52, 87)
+
 [node name="DoorClosedCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 22)
 shape = SubResource("RectangleShape2D_rnoap")
@@ -56,6 +62,15 @@ shape = SubResource("RectangleShape2D_kv0od")
 
 [node name="door_use" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_s4xru")
+
+[node name="EToOpen" type="Label" parent="."]
+visible = false
+z_index = 1
+offset_left = -3.0
+offset_top = 24.0
+offset_right = 37.0
+offset_bottom = 41.0
+text = "\"E\""
 
 [connection signal="body_entered" from="player_detector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="player_detector" to="." method="_on_player_detector_body_exited"]

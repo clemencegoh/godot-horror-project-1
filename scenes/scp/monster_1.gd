@@ -7,14 +7,15 @@ var movement_speed = 50.0
 @onready var animation_player: AnimationPlayer = $"./MonsterModel/AnimationPlayer"
 
 var caught_in_flashlight = false
+var acquiring_target = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("PLAYING ANIMATION")
 	animation_player.play("monster_idle")
 	call_deferred("seeker_setup")
 	game.connect("monster_spotted_in_flashlight", Callable(self, "monster_freeze"))
 	game.connect("monster_not_in_flashlight", Callable(self, "monster_unfreeze"))
+	game.connect("player_spotted", Callable(self, "should_acquire_target"))
 	#pass # Replace with function body.
 #
 func seeker_setup():
@@ -22,6 +23,9 @@ func seeker_setup():
 	if target:
 		navigation_agent_2d.target_position = target.global_position
 		print(target.global_position)
+
+func should_acquire_target():
+	acquiring_target = true
 		
 func acquire_target():
 	var players_around = get_tree().get_nodes_in_group("player")
@@ -40,7 +44,8 @@ func _physics_process(delta):
 	if is_instance_valid(target):
 		navigation_agent_2d.target_position = target.global_position
 	else:
-		acquire_target()
+		if acquiring_target:
+			acquire_target()
 	if navigation_agent_2d.is_navigation_finished():
 		return
 		
