@@ -5,6 +5,7 @@ func _ready():
 	set_process_unhandled_key_input(false)
 
 func player_died(name):
+	print("Died")
 	set_process_unhandled_key_input(true)
 
 func _unhandled_key_input(event):

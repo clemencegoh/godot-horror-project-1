@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://b78y3e0t7peod"]
+
+[ext_resource type="Script" path="res://scenes/item/keycard/key.gd" id="2_0viod"]
+[ext_resource type="AudioStream" uid="uid://brxp0fa0jdyi5" path="res://sounds/interact/pick_item1.ogg" id="2_e6ocb"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d1uy7"]
+load_path = "res://.godot/imported/key.png-85597b9614904628d21e9765a8f5d922.ctex"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_akli0"]
+radius = 27.5
+
+[sub_resource type="Gradient" id="Gradient_juslx"]
+offsets = PackedFloat32Array(0, 0.686486)
+colors = PackedColorArray(1, 1, 1, 0.521569, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nqugd"]
+gradient = SubResource("Gradient_juslx")
+fill = 1
+fill_from = Vector2(0.491453, 0.564103)
+fill_to = Vector2(0.115385, 0.217949)
+
+[node name="key" type="Sprite2D" groups=["Save"]]
+scale = Vector2(0.4, 0.4)
+texture = SubResource("CompressedTexture2D_d1uy7")
+script = ExtResource("2_0viod")
+
+[node name="GrabRange" type="Area2D" parent="."]
+input_pickable = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape2D" parent="GrabRange"]
+shape = SubResource("CircleShape2D_akli0")
+
+[node name="PickupSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_e6ocb")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(2.5, -2.5)
+texture = SubResource("GradientTexture2D_nqugd")
+
+[connection signal="body_entered" from="GrabRange" to="." method="_on_GrabRange_body_entered"]
+[connection signal="body_exited" from="GrabRange" to="." method="_on_GrabRange_body_exited"]

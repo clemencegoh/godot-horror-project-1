@@ -3,7 +3,7 @@
 [ext_resource type="AudioStream" uid="uid://ja6qmfwx0i1l" path="res://music/menu/menu_music_box.ogg" id="1_5v3sf"]
 [ext_resource type="Script" path="res://src/multiplayer/mainMenuController.gd" id="1_7he51"]
 [ext_resource type="Script" path="res://src/sound/main_menu_sound.gd" id="2"]
-[ext_resource type="PackedScene" uid="uid://b5hahte06un3t" path="res://scenes/player/player.tscn" id="2_015qf"]
+[ext_resource type="PackedScene" uid="uid://b5hahte06un3t" path="res://scenes/player/old_man.tscn" id="2_015qf"]
 [ext_resource type="FontFile" uid="uid://dbpy7tf8b2kk6" path="res://fonts/cmu-typewriter/Typewriter/cmuntb.ttf" id="3_t5b5a"]
 [ext_resource type="Script" path="res://src/main_menu/quit_button.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://dytrj7pxccgho" path="res://textures/foundation_logo.svg" id="5"]
@@ -163,25 +163,35 @@ expand_mode = 1
 
 [node name="Title1" type="Label" parent="Title"]
 layout_mode = 0
-offset_left = 50.0
-offset_top = 47.0
-offset_right = 457.0
-offset_bottom = 86.0
+offset_left = 4.0
+offset_top = 45.0
+offset_right = 482.0
+offset_bottom = 135.0
 theme_override_fonts/font = SubResource("1")
 theme_override_font_sizes/font_size = 32
-text = "The Blind and the Cripple"
+text = "School Reunion?
+
+
+
+
+
+
+
+Escape before time runs out
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Title2" type="Label" parent="Title"]
+visible = false
 layout_mode = 0
-offset_left = 181.0
-offset_top = 121.0
-offset_right = 285.0
-offset_bottom = 150.0
+offset_left = 56.0
+offset_top = 119.0
+offset_right = 474.0
+offset_bottom = 148.0
 theme_override_fonts/font = SubResource("2")
 theme_override_font_sizes/font_size = 28
-text = "Escape."
+text = "Escape before time runs out"
 horizontal_alignment = 1
 vertical_alignment = 1
 

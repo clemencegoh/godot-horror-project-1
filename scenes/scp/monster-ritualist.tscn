@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=3 uid="uid://c6d67pifwtlp5"]
+
+[ext_resource type="Texture2D" uid="uid://d3ppu3ymdj41m" path="res://scenes/scp/doctor_three.png" id="2_8ofuj"]
+[ext_resource type="Script" path="res://src/game/hud/debug_showhide.gd" id="3_eaemp"]
+[ext_resource type="Script" path="res://src/game/scp/raycast.gd" id="4_kcejn"]
+
+[sub_resource type="Animation" id="Animation_j7dxp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MonsterModel:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_wainr"]
+resource_name = "monster_idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MonsterModel:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.266667, 0.533333, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8w300"]
+_data = {
+"RESET": SubResource("Animation_j7dxp"),
+"monster_idle": SubResource("Animation_wainr")
+}
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 16.0312
+
+[sub_resource type="CircleShape2D" id="2"]
+radius = 240.052
+
+[node name="MonsterRitualist" type="CharacterBody2D" groups=["Save", "monster"]]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 25.0
+target_desired_distance = 15.0
+
+[node name="MonsterModel" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("2_8ofuj")
+hframes = 4
+vframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MonsterModel"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_8w300")
+}
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="DebugPathfinding" type="Line2D" parent="."]
+width = 2.0
+default_color = Color(1, 0.984314, 0, 1)
+script = ExtResource("3_eaemp")
+
+[node name="RayCastTarget" type="RayCast2D" parent="."]
+enabled = false
+target_position = Vector2(0, 0)
+script = ExtResource("4_kcejn")
+
+[node name="RayCastArea" type="Area2D" parent="."]
+
+[node name="RaycastCollision" type="CollisionShape2D" parent="RayCastArea"]
+shape = SubResource("2")
+
+[node name="Sounds" type="AudioStreamPlayer2D" parent="."]
+max_distance = 350.0
+bus = &"Sound"
+
+[node name="IdleTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="body_entered" from="RayCastArea" to="RayCastTarget" method="_on_RayCastArea_body_entered"]
+[connection signal="body_exited" from="RayCastArea" to="RayCastTarget" method="_on_RayCastArea_body_exited"]
+[connection signal="timeout" from="IdleTimer" to="." method="_on_IdleTimer_timeout"]

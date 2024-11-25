@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://8rh1e0ifx0wr"]
+
+[ext_resource type="Script" path="res://maps/game/win_area.gd" id="1_1sgjt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bro8s"]
+size = Vector2(82, 26)
+
+[node name="WinArea" type="Node2D"]
+visible = false
+position = Vector2(-80, -424)
+script = ExtResource("1_1sgjt")
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(31, 3)
+shape = SubResource("RectangleShape2D_bro8s")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

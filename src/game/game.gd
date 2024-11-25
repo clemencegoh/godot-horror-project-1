@@ -10,7 +10,7 @@ const STAMINA_EXHAUST = 1 #stamina exhaustion rate
 const WALK_SPEED = 50 #normal walking speed
 const WALK_BACK_FACTOR = .5 #speed when walking backwards
 const WALK_BACK_ANGLE = 2*PI/3 #angle at which the backwards walking buff takes action
-const SPRINT_SPEED = 100 #speed for sprinting
+const SPRINT_SPEED = 120 #speed for sprinting
 const INVENTORY_SIZE = 8 #max number of items in inventory
 const BLINK_RATE = .2 #this affects the time it takes for the player to blink
 const BLINK_TIME = .15 #player has eyes closed for this amount of time when blinking
@@ -21,7 +21,9 @@ const FLASHLIGHT_RECHARGE_SPEED = 0.7 # flashlight recharge speed
 const FLASHLIGHT_EXHAUST = 0.3 # flashlight exhaustion rate
 
 # warning-ignore:unused_signal
-signal player_died #signal launched when player dies
+signal player_died # signal launched when player dies
+signal player_win # signal launched when player wins
+
 # warning-ignore:unused_signal
 signal player_spotted #when an SCP or other enemy spots the player
 signal loading_started #signal launched when loading a new map has started

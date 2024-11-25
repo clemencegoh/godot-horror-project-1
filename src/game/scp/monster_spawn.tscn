@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc51viotyn0bg"]
+
+[ext_resource type="Texture2D" uid="uid://dr3hlyquuotux" path="res://scenes/scp/ritual_star.png" id="1_el6go"]
+[ext_resource type="Script" path="res://src/game/scp/monster_spawn.gd" id="1_ojjga"]
+
+[node name="MonsterSpawn" type="Node2D"]
+script = ExtResource("1_ojjga")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_el6go")

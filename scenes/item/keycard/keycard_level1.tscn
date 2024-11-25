@@ -1,22 +1,22 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://cwuh106qltmoi"]
 
-[ext_resource path="res://textures/item/keycard1.png" type="Texture2D" id=1]
-[ext_resource path="res://src/game/item/keycard/keycard_level1.gd" type="Script" id=2]
+[ext_resource type="Texture2D" uid="uid://cxn71v4wrlet0" path="res://textures/item/keycard1.png" id="1"]
+[ext_resource type="Script" path="res://src/game/item/keycard/keycard_level1.gd" id="2"]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 22.5, 17.5 )
+[sub_resource type="RectangleShape2D" id="1"]
+size = Vector2(45, 35)
 
 [node name="KeycardLevel1" type="Sprite2D" groups=["Save"]]
-scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 1 )
-script = ExtResource( 2 )
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1")
+script = ExtResource("2")
 
 [node name="GrabRange" type="Area2D" parent="."]
 input_pickable = false
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape2D" parent="GrabRange"]
-shape = SubResource( 1 )
+shape = SubResource("1")
 
 [connection signal="body_entered" from="GrabRange" to="." method="_on_GrabRange_body_entered"]
 [connection signal="body_exited" from="GrabRange" to="." method="_on_GrabRange_body_exited"]
