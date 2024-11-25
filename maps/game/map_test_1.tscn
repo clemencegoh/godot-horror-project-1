@@ -227,7 +227,7 @@ texture = ExtResource("8_3a52v")
 key_name = "keyFinal1"
 
 [node name="keyFinalFinal" parent="Navigation/Interactables" instance=ExtResource("7_aymji")]
-position = Vector2(1056, 784)
+position = Vector2(288, -544)
 texture = ExtResource("8_3a52v")
 key_name = "keyFinalFinal"
 
@@ -263,11 +263,12 @@ position = Vector2(-624, -472)
 
 [node name="doorFinalFinal" parent="Navigation/Interactables" instance=ExtResource("4_ji373")]
 position = Vector2(-48, -400)
+door_key_name = "keyFinalFinal"
 
 [node name="SpawnLocations" type="Node2D" parent="."]
 
 [node name="0" type="Node2D" parent="SpawnLocations" groups=["PlayerSpawn"]]
-position = Vector2(880, 1200)
+position = Vector2(8, 104)
 metadata/_edit_group_ = true
 
 [node name="Area2D" type="Area2D" parent="SpawnLocations/0"]
@@ -287,9 +288,6 @@ shape = SubResource("CircleShape2D_8r7vx")
 debug_color = Color(0.950352, 0.0944094, 0.507302, 0.42)
 
 [node name="Monsters" type="Node2D" parent="."]
-
-[node name="Monster1" parent="Monsters" instance=ExtResource("8_dbkod")]
-position = Vector2(16, 96)
 
 [node name="MonsterSpawn5" parent="Monsters" instance=ExtResource("9_7160l")]
 position = Vector2(-80, 88)

@@ -20,3 +20,6 @@ res://src/game/hud/death_message.gd
 res://scenes/win_message.gd
 res://scenes/scp/scp-017.tscn
 res://src/game/item/item_pickup.gd
+res://scenes/item/keycard/key.gd
+res://scenes/scp/monster_1.gd
+res://src/game/scp/monster_spawn.gd

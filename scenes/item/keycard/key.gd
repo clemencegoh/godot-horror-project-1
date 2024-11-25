@@ -7,3 +7,4 @@ func do_item_pickup():
 	keyObject.name = key_name
 	player.get_node("./Inventory").add_child(keyObject)
 	pickup_sound.play()
+	self.visible = false
