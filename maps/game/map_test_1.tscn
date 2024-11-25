@@ -145,7 +145,7 @@ tile_map_data = PackedByteArray("AAARAAwAAQABAAsAAAARAA0AAQABAAsAAAARAA4AAQABAAs
 tile_set = ExtResource("2_pqdmt")
 
 [node name="Decorations" type="TileMapLayer" parent="Navigation/Map"]
-tile_map_data = PackedByteArray("AAD6/xcAAwABAAgAAAD6/xgAAwABAAkAAAD7/xcAAwACAAgAAAD7/xgAAwACAAkAAAD8/xcAAwADAAgAAAD8/xgAAwADAAkAAAD9/xcAAwAEAAgAAAD9/xgAAwAEAAkAAAD+/xcAAwAEAAgAAAD+/xgAAwAEAAkAAAD//xcAAwAEAAgAAAD//xgAAwAEAAkAAAAAABcAAwAEAAgAAAAAABgAAwAEAAkAAAABABcAAwAFAAgAAAABABgAAwAFAAkAAAA=")
+tile_map_data = PackedByteArray("AAD6/xcAAwABAAgAAAD6/xgAAwABAAkAAAD7/xcAAwACAAgAAAD7/xgAAwACAAkAAAD8/xcAAwADAAgAAAD8/xgAAwADAAkAAAD9/xcAAwAEAAgAAAD9/xgAAwAEAAkAAAD+/xcAAwAEAAgAAAD+/xgAAwAEAAkAAAD//xcAAwAEAAgAAAD//xgAAwAEAAkAAAAAABcAAwAEAAgAAAAAABgAAwAEAAkAAAABABcAAwAFAAgAAAABABgAAwAFAAkAAAD8//P/AwAAAAAAAAD8//T/AwAAAAEAAAD8//X/AwAAAAIAAAD9//P/AwACAAAAAAD9//T/AwABAAEAAAD9//X/AwABAAIAAAD9//b/AwABAAMAAAD9//f/AwABAAQAAAD+//T/AwACAAEAAAD+//X/AwACAAIAAAD+//b/AwACAAMAAAD+//f/AwACAAQAAAD9//j/AwABAAEAAAD9//n/AwABAAIAAAD9//r/AwABAAMAAAD9//v/AwABAAQAAAD+//j/AwACAAEAAAD+//n/AwACAAIAAAD+//r/AwACAAMAAAD+//v/AwACAAQAAAD9//z/AwABAAEAAAD9//3/AwABAAIAAAD9//7/AwABAAMAAAD9////AwABAAQAAAD+//z/AwACAAEAAAD+//3/AwACAAIAAAD+//7/AwACAAMAAAD+////AwACAAQAAAD+//P/AwADAAAAAAD///P/AwAFAAAAAAD///T/AwAFAAEAAAD///X/AwAFAAEAAAD///b/AwAFAAEAAAD///f/AwAFAAEAAAD///j/AwAFAAEAAAD///n/AwAFAAEAAAD///r/AwAFAAEAAAD///v/AwAFAAEAAAD///z/AwAFAAEAAAD///3/AwAFAAEAAAD///7/AwAFAAEAAAD/////AwAFAAEAAAD8//b/AwAAAAEAAAD8//f/AwAAAAEAAAD8//j/AwAAAAEAAAD8//n/AwAAAAEAAAD8//r/AwAAAAEAAAD8//v/AwAAAAEAAAD8//z/AwAAAAEAAAD8//3/AwAAAAEAAAD8//7/AwAAAAEAAAD8////AwAAAAEAAAD8/wAAAwAAAAUAAAD9/wAAAwABAAUAAAD+/wAAAwACAAUAAAD//wAAAwAFAAUAAAARAAQAAwAAAAAAAAASAAUAAwADAAMAAAASAAQAAwABAAAAAAATAAQAAwAFAAAAAAATAAUAAwAFAAEAAAARAAUAAwAAAAEAAAARAAYAAwAAAAUAAAASAAYAAwABAAUAAAATAAYAAwAFAAUAAADo/wUAAwAAAAAAAADp/wUAAwAFAAAAAADp/wYAAwAFAAEAAADo/wYAAwAAAAEAAADo/wcAAwAAAAUAAADp/wcAAwAFAAUAAAASAPj/AwAAAAAAAAATAPj/AwAFAAAAAAATAPn/AwAFAAUAAAASAPn/AwAAAAUAAAAOAPH/AwAAAAAAAAAPAPH/AwAFAAAAAAAPAPL/AwAFAAUAAAAOAPL/AwAAAAUAAAA=")
 tile_set = ExtResource("2_pqdmt")
 
 [node name="Tutorial 1" type="Label" parent="Navigation"]
@@ -268,7 +268,7 @@ door_key_name = "keyFinalFinal"
 [node name="SpawnLocations" type="Node2D" parent="."]
 
 [node name="0" type="Node2D" parent="SpawnLocations" groups=["PlayerSpawn"]]
-position = Vector2(8, 104)
+position = Vector2(880, 1160)
 metadata/_edit_group_ = true
 
 [node name="Area2D" type="Area2D" parent="SpawnLocations/0"]
@@ -289,13 +289,13 @@ debug_color = Color(0.950352, 0.0944094, 0.507302, 0.42)
 
 [node name="Monsters" type="Node2D" parent="."]
 
-[node name="MonsterSpawn5" parent="Monsters" instance=ExtResource("9_7160l")]
+[node name="MonsterSpawn60" parent="Monsters" instance=ExtResource("9_7160l")]
 position = Vector2(-80, 88)
-spawn_timer = 5
+spawn_timer = 60
 monster = ExtResource("8_dbkod")
 
 [node name="MonsterSpawn180" parent="Monsters" instance=ExtResource("9_7160l")]
-position = Vector2(-864, -600)
+position = Vector2(-635, -248)
 spawn_timer = 180
 monster = ExtResource("8_dbkod")
 

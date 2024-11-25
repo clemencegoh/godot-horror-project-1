@@ -10,16 +10,6 @@ res://scenes/scp/monster-1.tscn
 res://scenes/item/keycard/keycard_level1.tscn
 res://scenes/item/keycard/key.tscn
 res://src/game/scp/monster_spawn.tscn
-res://scenes/scp/monster-ritualist.tscn
-res://maps/game/win_area.gd
 res://scenes/hud/death_menu.tscn
-res://scenes/hud/in_game_menu.tscn
-res://src/game/hud/death_menu/death_menu.gd
-res://src/game/scp/kill.gd
-res://src/game/hud/death_message.gd
-res://scenes/win_message.gd
+res://scenes/scp/monster-ritualist.tscn
 res://scenes/scp/scp-017.tscn
-res://src/game/item/item_pickup.gd
-res://scenes/item/keycard/key.gd
-res://scenes/scp/monster_1.gd
-res://src/game/scp/monster_spawn.gd
