@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://cru5337lkm2wc" path="res://sounds/interact/drop_item1.ogg" id="3_s4xru"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qnb56"]
-size = Vector2(7, 52)
+size = Vector2(7, 42)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_pe7ym"]
 polygon = PackedVector2Array(-24, -43, -24, 0, -23, 0, -23, -42, 23, -42, 23, 0, 24, 0, 24, -43)
@@ -27,8 +27,7 @@ region_enabled = true
 region_rect = Rect2(506, 634, 7, 86)
 
 [node name="DoorOpenCollision" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-19.5, 16)
+position = Vector2(-19.5, 21)
 shape = SubResource("RectangleShape2D_qnb56")
 
 [node name="DoorClosedOcluder" type="LightOccluder2D" parent="."]

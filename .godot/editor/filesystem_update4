@@ -1,11 +1,12 @@
 res://default_bus_layout.tres
-res://scenes/main_menu.tscn
+res://scenes/item/door_2.tscn
 res://maps/game/tilesets/Walls.tres
+res://README.md
+res://scenes/main_menu.tscn
 res://scenes/main_game.tscn
 res://maps/game/map_test_1.tscn
 res://scenes/player/old_man.tscn
 res://scenes/hud.tscn
-res://scenes/item/door_2.tscn
 res://scenes/scp/monster-1.tscn
 res://scenes/item/keycard/keycard_level1.tscn
 res://scenes/item/keycard/key.tscn
